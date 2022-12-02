@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bannar from '../../../assets/image/bannar.jpg'
+import bannar from '../../../assets/image/bannar-1.png'
 
 const Hero = () => {
     return (
