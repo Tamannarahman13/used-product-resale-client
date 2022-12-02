@@ -27,7 +27,7 @@ const Products = () => {
     return (
         <div>
             <div>
-                <h1 className='text-center mb-6 text-2xl'>Products</h1>
+                <h1 className='text-center mb-6 text-2xl font-bold'>Products</h1>
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 '>
 
