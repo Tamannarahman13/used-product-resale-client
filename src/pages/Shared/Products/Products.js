@@ -8,7 +8,7 @@ const Products = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get(' https://assignment-12-delta.vercel.app/products')
             .then((res) => setProducts(res.data))
             .catch(err => console.error(err)
 

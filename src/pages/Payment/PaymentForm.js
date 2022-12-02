@@ -6,7 +6,7 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 
 const PaymentForm = ({ product }) => {
   const { user } = useContext(AuthContext);
-const [processing,setProcessing]= useState(false)
+  const [processing, setProcessing] = useState(false)
   const [cardError, setCardError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [success, setSuccess] = useState("");
@@ -15,12 +15,12 @@ const [processing,setProcessing]= useState(false)
   const elements = useElements();
   const { productInfo, _id } = product;
 
-  const { price,title } = productInfo;
+  const { price, title } = productInfo;
   const mainPrice = price.resalePrice;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch(" https://assignment-12-delta.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -67,15 +67,15 @@ const [processing,setProcessing]= useState(false)
     }
     if (paymentIntent.status === "succeeded") {
       const payment = {
-        name:title,
+        name: title,
         price: mainPrice,
         product_id: _id,
         email: user.email,
         transactionId: paymentIntent.id,
-        
+
       };
       // post information in  database
-      fetch("http://localhost:5000/payments", {
+      fetch(" https://assignment-12-delta.vercel.app/payments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,8 +85,8 @@ const [processing,setProcessing]= useState(false)
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-           
-            
+
+
             setSuccess("Payment success!");
             setTransactionId(paymentIntent.id);
           }
@@ -118,7 +118,7 @@ const [processing,setProcessing]= useState(false)
         <div className="text-center">
           <Button
             type="submit"
-            disabled={!clientSecret || !stripe  || processing}
+            disabled={!clientSecret || !stripe || processing}
             className="bg-primary my-6 font-bold text-[#fff] text-center"
           >
             pay

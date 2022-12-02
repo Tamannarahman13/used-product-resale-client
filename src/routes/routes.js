@@ -53,12 +53,12 @@ const routes = createBrowserRouter([
             }
             , {
                 path: '/shop/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
+                loader: ({ params }) => fetch(` https://assignment-12-delta.vercel.app/products/${params.id}`),
                 element: <PrivateRoute><ProductDetails /></PrivateRoute>
             }, {
                 path: '/payment/:id',
                 element: <PrivateRoute><Payment /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(` https://assignment-12-delta.vercel.app/products/${params.id}`)
             }
         ]
 
@@ -88,7 +88,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/admin/seller',
-                loader: () => fetch(`http://localhost:5000/allUsers?AccountType=Seller`),
+                loader: () => fetch(` https://assignment-12-delta.vercel.app/allUsers?AccountType=Seller`),
                 element: <AdminRoute><AllUsers /></AdminRoute>
             },
             {

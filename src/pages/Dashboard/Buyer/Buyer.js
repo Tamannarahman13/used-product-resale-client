@@ -4,19 +4,19 @@ import UserTable from '../Admin/UserTable';
 
 const Buyer = () => {
     const accountType = "Buyer"
-    const {data:users=[]}= useQuery({
-        queryKey: ['accountType',accountType],
-        queryFn: () => fetch(`http://localhost:5000/allUsers?AccountType=${accountType}`)
-        .then(res=>res.json())
+    const { data: users = [] } = useQuery({
+        queryKey: ['accountType', accountType],
+        queryFn: () => fetch(` https://assignment-12-delta.vercel.app/allUsers?AccountType=${accountType}`)
+            .then(res => res.json())
     })
-   
-  
 
-    
+
+
+
     return (
-       <UserTable
-       users={users}
-       />
+        <UserTable
+            users={users}
+        />
     );
 };
 

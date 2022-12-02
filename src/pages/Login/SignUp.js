@@ -1,4 +1,4 @@
-import React, { useContext,  } from "react";
+import React, { useContext, } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ import SocialSignIn from "../Shared/SocialSignIn";
 const SignUp = () => {
 
   const { createUserWithEmailPass, updateUser } = useContext(AuthContext);
- 
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const SignUp = () => {
             .then((result) => {
               const user = result.user;
               const uid = user.uid;
-              
+
               const dbForm = { ...formInfo, uid: uid };
               const userData = {
                 displayName: data.name,
@@ -69,7 +69,7 @@ const SignUp = () => {
               updateUser(userData).then((result) => {
                 // send database
 
-                fetch("http://localhost:5000/users", {
+                fetch(" https://assignment-12-delta.vercel.app/users", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",
@@ -93,7 +93,7 @@ const SignUp = () => {
         } else {
         }
       });
-    
+
   };
   return (
     <div className="flex justify-center items-center pt-8">
