@@ -22,86 +22,91 @@ import AdminRoute from "./AdminRoute";
 import CommingSoon from "../pages/Shared/Comming/CommingSoon";
 import Wishlist from "../pages/Wishlist/Wistlist/Wishlist";
 import WishTable from "../pages/WishTable/WishTable";
+import Blog from "../pages/Blog/Blog";
 
 const routes = createBrowserRouter([
     {
-        path:'/',
-        element: <MainLayout/>,
-        children:[
+        path: '/',
+        element: <MainLayout />,
+        children: [
             {
                 path: '/',
-                element:<Home/>
+                element: <Home />
 
-            },{
-                path:'/shop',
-                element:<Shop/>
+            }, {
+                path: '/shop',
+                element: <Shop />
             }
-            ,{
-                path:'/orders',
-               
-                element:<PrivateRoute><MyOrder/></PrivateRoute>
+            , {
+                path: '/orders',
+
+                element: <PrivateRoute><MyOrder /></PrivateRoute>
             }
-            ,{
-                path:'/wishlist',
-               
-                element:<PrivateRoute><WishTable/></PrivateRoute>
+            , {
+                path: '/wishlist',
+
+                element: <PrivateRoute><WishTable /></PrivateRoute>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
-            ,{
-                path:'/shop/:id',
-               loader:({params})=> fetch(`http://localhost:5000/products/${params.id}`),
-                element:<PrivateRoute><ProductDetails/></PrivateRoute>
-            },{
-                path:'/payment/:id',
-                element:<PrivateRoute><Payment/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+            , {
+                path: '/shop/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>
+            }, {
+                path: '/payment/:id',
+                element: <PrivateRoute><Payment /></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
 
-    },{
+    }, {
         path: '/login',
-        element: <Login/>
+        element: <Login />
 
-    },{
+    }, {
         path: '/signup',
-        
-        element:<SignUp/>
-    },{
-        path:'*',
-        element:<NotFound/>
-    },{
-        path:'/dashboard',
-        element: <AdminRoute><DashboardLayout/></AdminRoute>,
-        children:[
 
-{
-            path:'/dashboard/admin',
-            element:<AdminRoute><CommingSoon/></AdminRoute>
-},
-{
-            path:'/dashboard',
-            element:<CommingSoon/>
-},
-{
-    path:'/dashboard/admin/seller',
-    loader:()=> fetch(`http://localhost:5000/allUsers?AccountType=Seller`),
-    element:<AdminRoute><AllUsers/></AdminRoute>
-},
-{
-    path:'/dashboard/admin/users',
-    
-    element: <Buyer/>
-},{
-    path:'/dashboard/seller/products',
-    element:<AdminRoute><SellerProducts/></AdminRoute>
-},
-{
-    path:'/dashboard/seller/addProduct',
-    element:<AdminRoute> <AddProduct/></AdminRoute>
-},
-{
-    path:'/dashboard/user',
-    element: <MyOrder/>
-}
+        element: <SignUp />
+    }, {
+        path: '*',
+        element: <NotFound />
+    }, {
+        path: '/dashboard',
+        element: <AdminRoute><DashboardLayout /></AdminRoute>,
+        children: [
+
+            {
+                path: '/dashboard/admin',
+                element: <AdminRoute><CommingSoon /></AdminRoute>
+            },
+            {
+                path: '/dashboard',
+                element: <CommingSoon />
+            },
+            {
+                path: '/dashboard/admin/seller',
+                loader: () => fetch(`http://localhost:5000/allUsers?AccountType=Seller`),
+                element: <AdminRoute><AllUsers /></AdminRoute>
+            },
+            {
+                path: '/dashboard/admin/users',
+
+                element: <Buyer />
+            }, {
+                path: '/dashboard/seller/products',
+                element: <AdminRoute><SellerProducts /></AdminRoute>
+            },
+            {
+                path: '/dashboard/seller/addProduct',
+                element: <AdminRoute> <AddProduct /></AdminRoute>
+            },
+            {
+                path: '/dashboard/user',
+                element: <MyOrder />
+            }
         ]
     }
 ])

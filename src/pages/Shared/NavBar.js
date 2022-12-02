@@ -28,6 +28,7 @@ const NavBar = () => {
     { id: 2, name: "Products", path: "/shop" },
     { id: 3, name: "My orders", path: "/orders" },
     { id: 4, name: "whislist", path: "/wishlist" },
+    { id: 5, name: "Blog", path: "/blog" },
   ];
   const profileLinks = [
     { id: 1, name: "Dashboard", path: "/dashboard" },
